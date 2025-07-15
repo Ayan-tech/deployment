@@ -2,7 +2,21 @@ import './style.css';
 var $ = jQuery;
 var animationTime = 20,
     days = 7;
- 
+
+function getTimeDifference() {
+    const now = new Date();
+    const next630 = new Date(now);
+    next630.setHours(6, 30, 0, 0); // Set to 6:30 AM of today
+
+    if(now > next630) {
+        // If current time is past 6:30 AM, set to 6:30 AM of the next day
+        next630.setDate(next630.getDate() + 1);
+    }
+    
+    return next630 - now; // Returns the difference in milliseconds
+}
+
+
 $(document).ready(function(){
 
     // timer arguments: 
